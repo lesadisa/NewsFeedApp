@@ -72,4 +72,9 @@ dependencies {
     annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
     // AdapterDelegate
     implementation "com.hannesdorfmann:adapterdelegates4-kotlin-dsl:4.3.0"
+    //News Api
+    implementation "com.github.KwabenBerko:News-API-Java:1.0.0"
+
+
+
 }
