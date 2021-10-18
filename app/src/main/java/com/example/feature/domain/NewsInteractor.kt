@@ -5,7 +5,7 @@ import com.example.feature.domain.model.NewsDomainModel
 
 class NewsInteractor(private val newsRepo: NewsRepo) {
 
-    fun getNews() : List<NewsDomainModel> {
+    fun getNews(): List<NewsDomainModel> {
         return newsRepo.getNews()
     }
 

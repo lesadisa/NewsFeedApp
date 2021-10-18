@@ -13,6 +13,6 @@ interface NewsApiClient {
         @Query("q") word: String = "",
         @Query("language") language: String = "ru",
         @Query("country") country: String = "ru"
-    ) : ApiResponseObject
+    ): ApiResponseObject
 
 }

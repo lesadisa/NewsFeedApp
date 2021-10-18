@@ -2,7 +2,7 @@ package com.example.feature.data.api.model
 
 import com.google.gson.annotations.SerializedName
 
-data class ApiArticleModel (
+data class ApiArticleModel(
 
     @SerializedName("source")
     val source: ApiSourceModel,

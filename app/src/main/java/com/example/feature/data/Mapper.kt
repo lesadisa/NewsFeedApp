@@ -10,24 +10,9 @@ fun ApiSourceModel.toDomain(): NewsDomainSourceModel {
         id = id,
         name = name,
 
-        /*
-         @SerializedName("description")
-    val description: String?,
-
-    @SerializedName("url")
-    val url: String?,
-
-    @SerializedName("category")
-    val category: String?,
-
-    @SerializedName("language")
-    val language: String?,
-
-    @SerializedName("country")
-    val country: String?,
-         */
-    )
+        )
 }
+
 fun ApiArticleModel.toDomain(): NewsDomainModel {
     return NewsDomainModel(
         author = author,
@@ -40,3 +25,21 @@ fun ApiArticleModel.toDomain(): NewsDomainModel {
         publishedAt = publishedAt
     )
 }
+
+
+/*
+ @SerializedName("description")
+val description: String?,
+
+@SerializedName("url")
+val url: String?,
+
+@SerializedName("category")
+val category: String?,
+
+@SerializedName("language")
+val language: String?,
+
+@SerializedName("country")
+val country: String?,
+ */
