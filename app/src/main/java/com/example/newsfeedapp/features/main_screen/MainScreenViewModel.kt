@@ -34,7 +34,6 @@ class MainScreenViewModel(private val interactor: NewsInteractor) : BaseViewMode
             is DataEvent.SuccesNewsRequest -> {
                 return previousState.copy(articleList = event.articleList, isloading = false)
             }
-
         }
         return null
     }
