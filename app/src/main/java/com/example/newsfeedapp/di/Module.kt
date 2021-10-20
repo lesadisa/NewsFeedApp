@@ -14,7 +14,7 @@ import retrofit2.Retrofit
 val mainScreenModule = module {
 
     viewModel {
-        MainScreenViewModel()
+        MainScreenViewModel(get())
     }
 
     single { NewsInteractor(get()) }
