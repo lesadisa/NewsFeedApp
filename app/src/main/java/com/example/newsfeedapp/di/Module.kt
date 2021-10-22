@@ -1,28 +1,27 @@
 package com.example.newsfeedapp.di
 
-import com.example.feature.data.api.NewsApiClient
-import com.example.feature.data.api.NewsRemoteSource
-import com.example.feature.data.api.NewsRepo
-import com.example.feature.data.api.NewsRepoImpl
-import com.example.feature.domain.NewsInteractor
-import com.example.newsfeedapp.features.main_screen.MainScreenViewModel
-import org.koin.androidx.viewmodel.dsl.viewModel
-import org.koin.core.scope.get
+import androidx.room.Room
+import com.example.newsfeedapp.AppDataBase
+import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
-import retrofit2.Retrofit
 
-val mainScreenModule = module {
+//const val BASE_URL = "https://api.openweathermap.org/"
+const val DATA_BASE = "DATA_BASE"
+val appModule = module {
+//    single<OkHttpClient> {
+//        OkHttpClient.Builder()
+//            .build()
+//    }
+}
 
-    viewModel {
-        MainScreenViewModel(get())
+val dataBaseModule = module {
+    single {
+        Room.databaseBuilder(androidContext(), AppDataBase::class.java, DATA_BASE)
+            .fallbackToDestructiveMigration()
+            .build()
     }
 
-    single { NewsInteractor(get()) }
-
-    single<NewsRepo> { NewsRepoImpl(get()) }
-
-    single { NewsRemoteSource(get()) }
-
-    single { get<Retrofit>().create(NewsApiClient::class.java) }
-
+    single {
+        get<AppDataBase>().bookmarksDAO()
+    }
 }

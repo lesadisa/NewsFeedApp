@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -32,10 +33,10 @@ android {
 }
 
 dependencies {
+    // Current version
+    def koin_version = "3.1.2"
     def lifecycle_version = "2.4.0-rc01"
     def retrofit_version = "2.9.0"
-    def koin_version = "3.1.2"
-    def coroutines_version = "1.5.2"
     def room_version = "2.3.0"
     def glide_version = "4.12.0"
 
@@ -64,17 +65,13 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:4.9.2"
     // Room
     implementation "androidx.room:room-runtime:$room_version"
-    annotationProcessor "androidx.room:room-compiler:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
     // Coroutines
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2"
     // Glide
     implementation "com.github.bumptech.glide:glide:$glide_version"
     annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
     // AdapterDelegate
     implementation "com.hannesdorfmann:adapterdelegates4-kotlin-dsl:4.3.0"
-    //News Api
-    implementation "com.github.KwabenBerko:News-API-Java:1.0.0"
-
-
-
 }

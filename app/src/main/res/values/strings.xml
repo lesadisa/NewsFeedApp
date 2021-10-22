@@ -1,5 +1,4 @@
 <resources>
     <string name="app_name">NewsFeedApp</string>
     <string name="my_text_fragment">My Text Fragment</string>
-    <string name="articlePhoto">Article photo</string>
 </resources>
