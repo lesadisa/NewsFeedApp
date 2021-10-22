@@ -1,18 +1,18 @@
 package com.example.feature.data.api
 
-import com.example.feature.data.api.model.ApiResponseObject
+import com.example.feature.const.HttpRes
+import com.example.feature.data.api.model.ApiNewsModel
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Query
+import java.util.*
 
 interface NewsApiClient {
 
-    @GET("everything")
+    @GET(HttpRes.NEWS_PATH)
     @Headers("X-Api-Key: 672c4b70da7240ad9f843d026f62adfa")
-    fun getNews(
-        @Query("q") word: String = "",
-        @Query("language") language: String = "ru",
-        @Query("country") country: String = "ru"
-    ): ApiResponseObject
+    suspend fun getNews(
+              @Query("country") language: String = Locale.getDefault().country
+    ): ApiNewsModel
 
 }

@@ -1,24 +1,33 @@
 package com.example.feature.di
 
+import com.example.feature.const.HttpRes
+import com.example.feature.const.HttpRes.BASE_URL
+import com.example.feature.data.api.NewsApiClient
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-const val BASE_URL = "https://newsapi.org/v2/"
-
 val appModule = module {
-
     single<OkHttpClient> {
-        OkHttpClient.Builder().build()
-    }
+        val httpLogging = HttpLoggingInterceptor()
+        httpLogging.level = HttpLoggingInterceptor.Level.BODY
 
-    single {
-        Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .client(get())
+        OkHttpClient.Builder()
+            .addInterceptor(httpLogging)
             .build()
     }
 
+    single<Retrofit> {
+        Retrofit.Builder()
+            .baseUrl(HttpRes.BASE_URL)
+            .client(get<OkHttpClient>())
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
+
+    single<NewsApiClient> {
+        get<Retrofit>().create(NewsApiClient::class.java)
+    }
 }
