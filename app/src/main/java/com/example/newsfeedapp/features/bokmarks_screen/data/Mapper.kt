@@ -5,6 +5,7 @@ import com.example.newsfeedapp.features.main_screen.domain.model.ArticleDomainMo
 fun ArticleDomainModel.toEntityModel() = BookmarksEntity(
     url = url,
     author = author,
+    imageUrl = urlToImage ?: "",
     title = title,
     description = description,
     publishedAt = publishedAt
@@ -15,5 +16,7 @@ fun BookmarksEntity.toDomainModel() = ArticleDomainModel(
     author = author,
     title = title,
     description = description,
-    publishedAt = publishedAt
+    publishedAt = publishedAt,
+    urlToImage = imageUrl
+
 )

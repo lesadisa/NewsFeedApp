@@ -17,8 +17,11 @@ data class BookmarksEntity(
     @ColumnInfo(name = "description")
     val description: String,
     @ColumnInfo(name = "publishedAt")
-    val publishedAt: String
-) {
+    val publishedAt: String,
+    @ColumnInfo(name = "image")
+    val imageUrl: String,
+
+    ) {
     companion object {
         const val TABLE_NAME = "BOOKMARKS_TABLE"
     }

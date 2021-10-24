@@ -5,5 +5,6 @@ data class ArticleDomainModel(
     val title: String,
     val description: String,
     val url: String,
-    val publishedAt: String
+    val publishedAt: String,
+    val urlToImage: String
 )
